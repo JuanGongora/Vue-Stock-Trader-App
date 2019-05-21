@@ -1,6 +1,6 @@
 <template>
     <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     {{ stock.name }}
@@ -40,17 +40,19 @@
             }
         },
         methods: {
-            ...mapActions([
-                'sellStock'
-            ]),
+            ...mapActions({
+                // aliasing name so that looping call does not occur inside the sellStock method
+                placeSellOrder: 'sellStock'
+            }),
             sellStock() {
                 const order = {
                     stockId: this.stock.id,
                     stockPrice: this.stock.price,
                     quantity: this.quantity
                 };
-                // can be called since mapActions alreadt created it for us
-                this.sellStock();
+                // can be called since mapActions already created it for us with an alias to prevent same name call loop
+                this.placeSellOrder(order);
+                this.quantity = 0;
             }
         }
     }
