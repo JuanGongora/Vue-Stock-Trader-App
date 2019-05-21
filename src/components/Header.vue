@@ -10,6 +10,7 @@
                     <router-link to="/portfolio" activeClass="active" tag="li"><a>Portfolio</a></router-link>
                     <router-link to="/stocks" activeClass="active" tag="li"><a>Stocks</a></router-link>
                 </ul>
+                <strong class="navbar-text navbar-right">Funds: {{ funds }}</strong>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">End Day</a></li>
                     <li class="dropdown">
@@ -32,8 +33,18 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
-        name: "Header"
+        name: "Header",
+        computed: {
+            ...mapGetters([
+                 'funds'
+            ])
+            // funds() {
+            //     return this.$store.getters.funds;
+            // }
+        }
     }
 </script>
 
