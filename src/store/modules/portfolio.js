@@ -5,16 +5,14 @@ const state = {
 
 const mutations = {
     // pulling data from buyStock()
-    'BUY_STOCK' (state, {stockID, quantity, stockPrice}) {
+    'BUY_STOCK' (state, {stockId, quantity, stockPrice}) {
         // check to see if I already own the stock, to increase instead of create
-        const record = state.stocks.find(element => element.id == stockId);
+        const record = state.stocks.find(element => element.id === stockId);
         if (record) {
             record.quantity += quantity;
         } else {
-            state.stocks.push({
-                id: stockId,
-                quantity: quantity
-            });
+            let currentStock = { id: stockId, quantity: quantity };
+            state.stocks.push(currentStock);
         }
         state.funds -= stockPrice * quantity;
     },
