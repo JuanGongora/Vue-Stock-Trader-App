@@ -12,14 +12,14 @@
                     <input type="number"
                            class="form-control"
                            placeholder="Quantity"
-                           v-model="quantity"
+                           v-model.number="quantity"
                     >
                 </div>
                 <div class="pull-right">
                     <button
                             class="btn btn-success"
                             @click="buyStock"
-                            :disabled="quantity <= 0"
+                            :disabled="quantity <= 0 || !Number.isInteger(quantity)"
                     >Buy</button>
                 </div>
             </div>
@@ -44,7 +44,8 @@
                     stockPrice: this.stock.price,
                     quantity: this.quantity
                 };
-                console.log(order);
+                // buyStock comes from store module stocks
+                this.$store.dispatch('buyStock', order);
                 this.quantity = 0;
             }
         }

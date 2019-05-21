@@ -17,7 +17,7 @@ const mutations = {
 const actions = {
     // comes from 'context' but only need the appended commit
     buyStock: ({ commit }, order) => {
-        commit();
+        commit('BUY_STOCK', order);
     },
     initStocks: ({commit}) => {
         commit('SET_STOCKS', stocks);
