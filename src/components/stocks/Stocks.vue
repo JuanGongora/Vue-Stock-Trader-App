@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>The Stocks Component</h1>
-        <app-stock v-for="stock in stocks"></app-stock>
+        <app-stock v-for="stock in stocks" :stock="stock"></app-stock>
     </div>
 </template>
 
