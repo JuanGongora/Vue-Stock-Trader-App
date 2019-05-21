@@ -11,6 +11,11 @@
         name: "Stocks",
         components: {
             appStock: Stock
+        },
+        computed: {
+            stocks() {
+                return this.$store.getters.stocks;
+            }
         }
     }
 </script>

@@ -1,3 +1,5 @@
+import stocks from '../../data/stocks';
+
 const state = {
     stocks: []
 };
@@ -8,7 +10,7 @@ const mutations = {
         state.stocks = stocks;
     },
     'RND_STOCKS' (state) {
-
+        // this will randomize stock value for a day
     }
 };
 
@@ -17,7 +19,23 @@ const actions = {
     buyStock: ({ commit }, order) => {
         commit();
     },
-    setStocks: ({commit}) => {
-        commit('SET_STOCKS');
+    initStocks: ({commit}) => {
+        commit('SET_STOCKS', stocks);
+    },
+    randomizedStocks: ({commit}) => {
+        commit('RND_STOCKS');
     }
+};
+
+const getters = {
+    stocks: state => {
+        return state.stocks;
+    }
+};
+
+export default {
+    state,
+    mutations,
+    actions,
+    getters
 };

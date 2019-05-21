@@ -16,6 +16,10 @@
     export default {
         components: {
             appHeader: Header
+        },
+        // created hook, you will be able to access reactive data and active events
+        created() {
+            this.$store.dispatch('initStocks');
         }
     }
 </script>
